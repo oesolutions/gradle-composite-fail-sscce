@@ -1,0 +1,1 @@
+# gradle-composite-fail-sscce
