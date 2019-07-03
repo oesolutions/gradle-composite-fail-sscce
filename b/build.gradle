@@ -1,0 +1,29 @@
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+//        classpath 'org.example:j:1'
+    }
+}
+
+repositories {
+    mavenLocal()
+}
+
+configurations {
+    bConfig
+}
+
+dependencies {
+    bConfig 'org.example:a:+'
+}
+
+task dumpFiles {
+    inputs.files configurations.bConfig
+    doLast {
+        println configurations.bConfig.join( '\n' )
+    }
+}
+

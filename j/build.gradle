@@ -1,0 +1,18 @@
+
+println 'Configuring j'
+
+apply plugin: 'maven-publish'
+
+apply plugin: 'java'
+
+group = 'org.example'
+version = '1'
+
+publishing {
+    publications {
+        j( MavenPublication ) {
+            from components.java
+        }
+    }
+}
+

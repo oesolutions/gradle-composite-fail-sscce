@@ -1,0 +1,15 @@
+
+tasks.addRule( 'Pattern: <included build>%<task>' ) { String taskName ->
+    if( taskName.contains( '%' ) )
+    {
+        def parts = taskName.split( '%' )
+        if( parts.size() != 2 )
+        {
+            throw new GradleException( "Invalid included build task reference '${taskName}'" )
+        }
+        task( taskName ) {
+            dependsOn gradle.includedBuild( parts[0] ).task( ":${parts[1]}" )
+        }
+    }
+}
+

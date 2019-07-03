@@ -1,0 +1,17 @@
+
+println 'Configuring a'
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+        classpath 'org.example:j:1'
+    }
+}
+
+allprojects {
+    group = 'org.example'
+    version = '1'
+}
+

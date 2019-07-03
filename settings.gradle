@@ -1,0 +1,9 @@
+
+includeBuild 'j'
+includeBuild( 'a' ) {
+    dependencySubstitution {
+        substitute module('org.example:a') with project( ':a' )
+    }
+}
+includeBuild 'b'
+

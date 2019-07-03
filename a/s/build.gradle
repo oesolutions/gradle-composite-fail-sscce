@@ -1,0 +1,44 @@
+
+println 'Configuring a:s'
+
+apply plugin: 'maven-publish'
+
+buildscript {
+    repositories {
+        mavenLocal()
+    }
+    dependencies {
+//        classpath 'org.example:j:1'
+    }
+}
+
+apply plugin: 'base'
+
+repositories {
+    mavenLocal()
+}
+
+configurations {
+    someConfig
+}
+
+dependencies {
+    someConfig 'org.example:j:1'
+}
+
+task makeZip( type: Zip ) {
+    from configurations.someConfig
+}
+
+artifacts {
+    'default' tasks.makeZip
+}
+
+publishing {
+    publications {
+        s( MavenPublication ) {
+            artifact tasks.makeZip
+        }
+    }
+}
+
